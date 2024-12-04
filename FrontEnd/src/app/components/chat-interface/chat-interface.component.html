@@ -1,0 +1,102 @@
+<div class="container">
+
+
+
+  <div class="sideNavigation">
+      <div class="topBarAction">
+          <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="sideNavButton">
+          <button> <i class="fa-solid fa-plus"></i> <span class="collapseText collapse" (click)="newChat()">New Chat</span></button>
+      </div>
+      <div class="chatHistory">
+          <h1 class="recentText">Recent</h1>
+          <ul>
+              </ul>
+      </div>
+      <div class="actionList">
+          <button class="transparentButton"> <i class="fa-regular fa-circle-question"></i> <span class="collapseText">Help</span></button>
+          <button class="transparentButton"> <i class="fa-solid fa-clock-rotate-left"></i> <span class="collapseText">Activity</span></button>
+          <button class="transparentButton"> <i class="fa-solid fa-gear"></i> <span class="collapseText">Settings</span></button>
+      </div>
+  </div>
+
+
+
+
+<div class="chatWindow">
+  <div class="startContent">
+      <div class="startContent">
+          <h1 class="heading">
+              <span class="brandHello">
+                  Meet Your Research Buddy
+              </span>
+              <br/>
+              <span class="brandQuestion">
+                  Your AI-Powered Partner in Scientific
+              </span>
+              <br/>
+              <span class="brandDiscovery">
+                  Discovery
+                  <img src="assets/images/chatbot2.png" alt="Chatbot Image" class="chatbot-image"/>
+              </span>
+          </h1>
+      </div>
+
+
+
+
+  <div class="list-container">
+      <ul id="promptList">
+          <!-- List items will be added here dynamically -->
+      </ul>
+      <!-- <img src="images/chatbot2.png" alt="Chatbot Image" class="chatbot-image"/>   -->
+  </div>
+
+  </div>
+
+
+  <div class="chatContent">
+
+      <div class="results">
+      </div>
+
+  </div>
+
+  <div class="inputArea">
+      <input type="text" placeholder="Provide a prompt below or select a file to upload. ">
+  <div class="iconGroup">
+      <i class="fa-solid fa-download"  id="upload-icon"></i>
+      <i class="fa fa-arrow-circle-up" id="send-message" style="display: none;"></i>
+      <i class="fa-solid fa-paper-plane"  id="paper-plane-icon"></i>
+  </div>
+
+  <!-- Hidden file input -->
+<input type="file" id="file-upload" style="display:none;" multiple accept=".pdf">
+
+<!-- Popup notification -->
+<!-- Popup notification -->
+<div id="popup">
+  <i class="fa-solid fa-check icon"></i>
+  <span class="message">Files uploaded successfully! Please submit your question.</span>
+</div>
+
+
+  <div class="test">
+<p></p>
+
+
+  </div>
+  </div>
+
+<p class="privacyPolicy">
+  Our AI may present information that is not always accurate. Users are advised to verify the responses independently.
+
+</p>
+
+</div>
+
+
+
+
+</div>
