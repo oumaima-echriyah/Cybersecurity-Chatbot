@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Git Config') {
+            steps {
+                sh 'git config --global http.postBuffer 524288000'
+            }
+        }
         stage('Checkout') {
             steps {
                 script {
