@@ -2,19 +2,17 @@ pipeline {
     agent any
     
    environment {
-        DOCKERHUB_USERNAME = 'ouassim012'
-        DOCKERHUB_PASSWORD = 'Czju7848@'
+        DOCKERHUB_USERNAME = 'x'
+        DOCKERHUB_PASSWORD = 'x@'
     }
 
     stages {
-        stage('Git Config') {
-            steps {
-                sh 'git config --global http.postBuffer 524288000'
-            }
-        }
+       
         stage('Checkout') {
             steps {
                 script {
+                    sh 'git config --global http.postBuffer 157286400'
+
                     // Ensure the correct branch is checked out
                     try {
                         checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
