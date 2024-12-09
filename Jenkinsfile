@@ -1,21 +1,21 @@
 pipeline {
     agent any
     
-   environment {
-        DOCKERHUB_USERNAME = 'ouassim012'
-        DOCKERHUB_PASSWORD = 'Czju7848@'
+    environment {
+        DOCKERHUB_USERNAME = 'ouassim012' 
+        DOCKERHUB_PASSWORD = 'Czju7848@' 
     }
 
     stages {
-       
         stage('Checkout') {
             steps {
                 script {
+                    // Set Git config to handle large repos
                     sh 'git config --global http.postBuffer 157286400'
 
-                    // Ensure the correct branch is checked out
+                    // Clone the repository with depth 1 for a shallow clone
                     try {
-                        checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'CloneOption', depth: 1]], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
+                        sh 'git clone --depth 1 https://github.com/oumaima-echriyah/Cybersecurity-Chatbot.git'
                     } catch (Exception e) {
                         error "Git checkout failed: ${e.message}"
                     }
