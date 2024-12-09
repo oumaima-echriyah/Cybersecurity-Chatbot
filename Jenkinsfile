@@ -2,8 +2,8 @@ pipeline {
     agent any
     
    environment {
-        DOCKERHUB_USERNAME = 'x'
-        DOCKERHUB_PASSWORD = 'x@'
+        DOCKERHUB_USERNAME = 'ouassim012'
+        DOCKERHUB_PASSWORD = 'Czju7848@'
     }
 
     stages {
@@ -15,7 +15,7 @@ pipeline {
 
                     // Ensure the correct branch is checked out
                     try {
-                        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
+                        checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'CloneOption', depth: 1]], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
                     } catch (Exception e) {
                         error "Git checkout failed: ${e.message}"
                     }
