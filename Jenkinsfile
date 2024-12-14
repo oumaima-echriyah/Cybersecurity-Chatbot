@@ -1,21 +1,23 @@
 pipeline {
     agent any
     
-    environment {
-        DOCKERHUB_USERNAME = 'ouassim012' 
-        DOCKERHUB_PASSWORD = 'Czju7848@' 
+   environment {
+        DOCKERHUB_USERNAME = 'ouassim012'
+        DOCKERHUB_PASSWORD = 'Czju7848@'
     }
 
     stages {
+        stage('Git Config') {
+            steps {
+                sh 'git config --global http.postBuffer 524288000'
+            }
+        }
         stage('Checkout') {
             steps {
                 script {
-                    // Set Git config to handle large repos
-                    sh 'git config --global http.postBuffer 157286400'
-
-                    // Clone the repository with depth 1 for a shallow clone
+                    // Ensure the correct branch is checked out
                     try {
-                        sh 'git clone --depth 1 https://github.com/oumaima-echriyah/Cybersecurity-Chatbot.git'
+                        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
                     } catch (Exception e) {
                         error "Git checkout failed: ${e.message}"
                     }
@@ -41,7 +43,7 @@ pipeline {
                 script {
                     // Build Docker image for Angular with error handling
                     try {
-                        sh 'docker build -t cybersecurity/frontend-app Frontend'
+                        vat 'docker build -t cybersecurity/frontend-app Frontend'
                     } catch (Exception e) {
                         error "Docker build failed: ${e.message}"
                     }

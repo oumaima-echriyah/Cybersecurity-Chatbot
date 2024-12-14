@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: angular-frontend
-        image: ouassim012/angular-frontend:latest # Replace with your image
+        image: ouassim012/cybersecurity:frontend-app # Replace with your image
         ports:
         - containerPort: 80
