@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ouassim012/cybersecurity
+  name: ouassim012-cybersecurity
   labels:
-    app: ouassim012/cybersecurity
+    app: ouassim012-cybersecurity
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ouassim012/cybersecurity
+      app: ouassim012-cybersecurity
   template:
     metadata:
       labels:
-        app: ouassim012/cybersecurity
+        app: ouassim012-cybersecurity
     spec:
       containers:
-      - name: angular-frontend
+      - name: cybersecurity-chatbot
         image: ouassim012/cybersecurity:frontend-app # Replace with your image
         ports:
         - containerPort: 80
