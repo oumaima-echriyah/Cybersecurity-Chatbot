@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: angular-frontend
+  name: ouassim012/cybersecurity
   labels:
-    app: angular-frontend
+    app: ouassim012/cybersecurity
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: angular-frontend
+      app: ouassim012/cybersecurity
   template:
     metadata:
       labels:
-        app: angular-frontend
+        app: ouassim012/cybersecurity
     spec:
       containers:
       - name: angular-frontend
