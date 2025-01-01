@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-app-container
-        image: fassali/flask-app:v1
+        image: fassali/diffusion_model1:flask-app 
         ports:
         - containerPort: 5000
         env:
