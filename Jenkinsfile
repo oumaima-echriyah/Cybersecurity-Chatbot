@@ -1,95 +1,106 @@
 pipeline {
     agent any
-    
-   environment {
-        DOCKERHUB_USERNAME = 'ouassim012'
-        DOCKERHUB_PASSWORD = 'Czju7848@'
+    environment {
+        DOCKERHUB_USERNAME = 'x'
+        DOCKERHUB_PASSWORD = 'x@'
+       // DOCKER_TLS_VERIFY = "1"
+       // DOCKER_HOST ="npipe:////./pipe/docker_engine"
+        //"tcp://127.0.0.1:55644"
+        DOCKER_CERT_PATH = "C:\\Users\\OUASSIM\\.minikube\\certs"
+        MINIKUBE_ACTIVE_DOCKERD = "minikube"
     }
-
     stages {
-        stage('Git Config') {
+        stage('Prepare Environment') {
             steps {
-                sh 'git config --global http.postBuffer 524288000'
+                echo 'Setting up Git configurations...'
+                bat '''
+                    git config --global core.compression 0
+                '''
             }
         }
-        stage('Checkout') {
+
+        stage('Clone or Update Repository') {
+            steps {
+                echo 'Checking if repository exists...'
+                bat '''
+                    if not exist "Cybersecurity-Chatbot" (
+                        echo Repository not found. Cloning...
+                        git clone --depth 1 https://github.com/oumaima-echriyah/Cybersecurity-Chatbot.git
+                    ) else (
+                        echo Repository found. Updating...
+                        cd Cybersecurity-Chatbot
+                        git pull --all
+                    )
+                '''
+            }
+        }
+        stage('Test Docker Access') {
             steps {
                 script {
-                    // Ensure the correct branch is checked out
-                    try {
-                        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
-                    } catch (Exception e) {
-                        error "Git checkout failed: ${e.message}"
-                    }
-                }
-            }
+                    bat 'docker info'
         }
-        
+    }
+}
+
+
         stage('Login to Docker Hub') {
             steps {
                 script {
-                    // Login to Docker Hub with error handling
-                    try {
-                        sh "echo ${DOCKERHUB_PASSWORD} | docker login -u ${DOCKERHUB_USERNAME} --password-stdin"
-                    } catch (Exception e) {
-                        error "Docker login failed: ${e.message}"
-                    }
-                }
-            }
-        }
-        
-        stage('Build Docker image for Angular') {
-            steps {
-                script {
-                    // Build Docker image for Angular with error handling
-                    try {
-                        vat 'docker build -t cybersecurity/frontend-app Frontend'
-                    } catch (Exception e) {
-                        error "Docker build failed: ${e.message}"
+                    withCredentials([usernamePassword(credentialsId: 'ouassim', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                       def loginCmd = "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+                        bat(loginCmd)
+                        //def loginCmd = "docker login -u ouassim012 -p Czju7848@"
+                        //bat(loginCmd)
                     }
                 }
             }
         }
 
-        stage('Push Angular image to Docker Hub') {
+        stage('Build Docker Image for Angular') {
             steps {
-                script {
-                    // Push Docker image to Docker Hub with error handling
-                    try {
-                        sh 'docker push cybersecurity/frontend-app'
-                    } catch (Exception e) {
-                        error "Docker push failed: ${e.message}"
-                    }
-                }
+                bat '''docker build -t ouassim012/cybersecurity:frontend-app ./Cybersecurity-Chatbot/FrontEnd'''
             }
         }
+
+        stage('Push Angular Image to Hub') {
+            steps {
+                bat '''docker push ouassim012/cybersecurity:frontend-app'''
+            }
+        }
+    
+
 
         stage('Deploy Angular to Kubernetes') {
             steps {
                 script {
-                    // Deploy Angular to Kubernetes with error handling
-                    try {
-                        sh 'kubectl apply -f Frontend/frontend-deployment.yaml'
-                        sh 'kubectl apply -f Frontend/frontend-service.yaml'
-                    } catch (Exception e) {
-                        error "Kubernetes deployment failed: ${e.message}"
+                    echo 'Checking Minikube Status...'
+                    def minikubeStatus = bat(script: 'minikube status', returnStatus: true)
+                    
+                    if (minikubeStatus != 0) {
+                        echo 'Minikube not running. Starting Minikube...'
+                        bat 'minikube start --driver=docker'
                     }
+                    
+                    echo 'Deploying to Kubernetes...'
+                   // kubernetesDeploy(
+                  //      configs: 'Cybersecurity-Chatbot/FrontEnd/frontend-deployment.yaml',
+                  //      kubeconfigId: 'Kube1'
+                  //  )
+                   // kubernetesDeploy(
+                   //     configs: 'Cybersecurity-Chatbot/FrontEnd/frontend-service.yaml',
+                    //    kubeconfigId: 'Kube1'
+                   // )
+                   bat ''' kubectl apply -f Cybersecurity-Chatbot/FrontEnd/frontend-deployment.yaml '''
+                 bat ''' kubectl apply -f Cybersecurity-Chatbot/FrontEnd/frontend-service.yaml '''
+
                 }
             }
         }
-
-        stage('Verify Deployment') {
-            steps {
-                script {
-                    // Verify if the Angular app is successfully deployed and running in Kubernetes
-                    try {
-                        sh 'kubectl get pods -n default'
-                        sh 'kubectl get svc -n default'
-                    } catch (Exception e) {
-                        error "Kubernetes verification failed: ${e.message}"
-                    }
-                }
-            }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline execution completed.'
         }
     }
 }

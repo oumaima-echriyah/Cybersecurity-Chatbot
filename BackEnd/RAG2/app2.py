@@ -1,6 +1,6 @@
 # app.py
 from flask import Flask, request, jsonify
-from chat import get_pdf_text, get_text_chunks, get_vector_store, user_input
+from chat import get_pdf_text_from_folder, get_text_chunks, get_vector_store, user_input
 import os
 from flask_cors import CORS
 
@@ -19,7 +19,9 @@ def upload_files():
 
     # Traiter les fichiers PDF
     try:
-        raw_text = get_pdf_text(files)
+        raw_text = ""
+        for file in files:
+            raw_text += get_pdf_text_from_folder(file)
         text_chunks = get_text_chunks(raw_text)
         get_vector_store(text_chunks)
         return jsonify({'message': 'Files processed successfully'}), 200
@@ -42,4 +44,4 @@ def ask_question():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True,port=7000)
+    app.run(debug=True,host='0.0.0.0',port=5000)
