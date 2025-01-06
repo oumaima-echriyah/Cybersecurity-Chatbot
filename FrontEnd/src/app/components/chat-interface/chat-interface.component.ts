@@ -13,19 +13,19 @@ interface PromptQuestion {
 export class ChatInterfaceComponent implements OnInit {
   promptQuestions: PromptQuestion[] = [
     {
-      input: "What is the article 2408.03297 about in arXiV?",
+      input: "How To Maintain Efffective Cyber Security?",
       icon: "fa-solid fa-wand-magic-sparkles",
     },
     {
-      input: "How can we define Natural Language Processing?",
+      input: "what are the Types of Cyber Security Threats ? ",
       icon: "fa-solid fa-code",
     },
     {
-      input: "How can we define Machine Learning ML?",
+      input: "What are the consequences of cyber attack ? ",
       icon: "fa-solid fa-wand-magic-sparkles",
     },
     {
-      input: "What are the principles of quantum mechanics?",
+      input: "What is Phishing and what does a security analyst do ?  ",
       icon: "fa-solid fa-code",
     },
   ];
@@ -174,7 +174,7 @@ handleSendMessage(appendHistory: boolean): void {
 
   this.renderer.setProperty(results, 'innerHTML', resultTitle + resultData);
 
-  fetch("http://127.0.0.1:7000/ask", {
+  fetch("http://127.0.0.1:8080/chat", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -355,7 +355,7 @@ handleSendMessage(appendHistory: boolean): void {
       const resultResponse = `
         <div class="resultResponse">
           <img src="assets/images/bot.png"/>
-          <p id="typeEffect">${data.output}</p>
+          <p id="typeEffect">${data.response}</p>
         </div>
       `;
 

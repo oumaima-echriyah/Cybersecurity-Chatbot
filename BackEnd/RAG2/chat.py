@@ -15,7 +15,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # Chemin fixe pour le dossier contenant les fichiers PDF
-FOLDER_PATH = "C:/Users/pc razen 5/Desktop/Oumaima_Echriyah_FSTT_SITBD_3_1_PFA_2024_3dsf/BackEnd/RAG2/data"
+FOLDER_PATH = "C:/Users/pc razen 5/Desktop/Cybersecurity Chatbot/BackEnd/RAG2/data"
 
 # Fonction pour extraire le texte des fichiers PDF
 def get_pdf_text_from_folder(folder_path):
@@ -38,7 +38,7 @@ def get_text_chunks(text):
 def get_vector_store(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
-    vector_store.save_local("faiss_index")
+    vector_store.save_local("./BackEnd/RAG2/faiss_index")
 
 # Fonction pour créer la chaîne de traitement des questions
 def get_conversational_chain():
@@ -64,7 +64,7 @@ def get_conversational_chain():
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     # Charger la base de données vectorielle
-    new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+    new_db = FAISS.load_local("./BackEnd/RAG2/faiss_index", embeddings, allow_dangerous_deserialization=True)
     # Rechercher des documents similaires
     docs = new_db.similarity_search(user_question)
 
@@ -94,4 +94,4 @@ def main():
         print(f"Answer: {response}")
 
 if __name__ == "__main__":
-    main()
+    main()  
