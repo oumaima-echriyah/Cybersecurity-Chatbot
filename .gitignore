@@ -3,3 +3,5 @@
 "BackEnd/myenv/" 
 "BackEnd/myenv/Lib/site-packages/torch/lib/dnnl.lib" 
 "BackEnd/myenv/Lib/site-packages/torch/lib/torch_cpu.dll" 
+*.lib
+*.dll
