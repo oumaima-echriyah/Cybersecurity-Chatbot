@@ -1,4 +1,4 @@
-<img width="960" alt="image" src="https://github.com/user-attachments/assets/1cf99eb5-58c7-48d5-89a3-717b82314444" /># Combining Diffusion Models and Language Understanding Models in a Cybersecurity Chatbot with Advanced Retrieval-Augmented Generation (RAG) Using a Microservices Architecture in a DevOps/MLOps Context
+# Combining Diffusion Models and Language Understanding Models in a Cybersecurity Chatbot with Advanced Retrieval-Augmented Generation (RAG) Using a Microservices Architecture in a DevOps/MLOps Context
 
 ## Introduction
 This project aims to enhance cybersecurity through a chatbot powered by Diffusion Models and Language Understanding Models. By integrating Advanced Retrieval-Augmented Generation (RAG) and utilizing a microservices architecture in a DevOps/MLOps context, we aim to provide an efficient, scalable, and intelligent chatbot solution for real-time cybersecurity threat management.
