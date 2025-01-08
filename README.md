@@ -26,23 +26,31 @@ Key components of the project include:
     - `load_vector_db`: Loads the FAISS vector database for similarity searches.
     - `get_conversational_chain`: Creates a conversational chain with predefined prompts.
     - `ask`: Handles user queries, retrieves relevant data, and generates responses.
+      
 ![Successful Initialization of Vector Store in RAG System](assets/vectorstore.PNG)
 
 
 **Backend Developer:**
 - Developed a **Flask API** for seamless interaction with the RAG system.
-![Successful Initialization of Vector Store in RAG System](assets/flask-api-test..PNG)
+  
+![flask](assets/flask-api-test..PNG)
 
 
 
 **Frontend Developer:**
 - Developed an Angular-based **chat interface** for the cybersecurity chatbot.
-    ![Successful Initialization of Vector Store in RAG System](chat-interface.PNG)
+- 
+    ![chat interface](chat-interface.PNG)
 
 - Enabled users to ask cybersecurity-related questions interactively.
-  ![Successful Initialization of Vector Store in RAG System](assets/load-response.PNG)
-  ![Successful Initialization of Vector Store in RAG System](assets/response-security-bot.PNG)
+  
+  ![response](assets/load-response.PNG)
+  ![response2](assets/response-security-bot.PNG)
+  
 - Ensured clear error handling for queries unrelated to the cybersecurity dataset.
+
+    ![response2](assets/outOfContext.PNG)
+
 - Designed a user-friendly interface similar to modern chatbot designs.
 
 
