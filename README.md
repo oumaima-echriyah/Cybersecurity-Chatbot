@@ -21,15 +21,16 @@ Key components of the project include:
 - Utilized **Python** for RAG system development.
 - Integrated **Gemini** as the Language Model and **FAISS** as the Vector Database.
 - Ensured accurate data indexing and retrieval.
-
-**Backend Developer:**
-- Developed a **Flask API** for seamless interaction with the RAG system.
-- Key API Functions:
+- Key Functions for RAG:
     - `initialize_model`: Initializes the Gemini model with a specified configuration.
     - `load_vector_db`: Loads the FAISS vector database for similarity searches.
     - `get_conversational_chain`: Creates a conversational chain with predefined prompts.
     - `ask`: Handles user queries, retrieves relevant data, and generates responses.
-- Flask API enables querying cybersecurity datasets and retrieving precise answers.
+
+
+**Backend Developer:**
+- Developed a **Flask API** for seamless interaction with the RAG system.
+
 
 *Example usage screenshot via Postman will be added.*
 
@@ -39,7 +40,6 @@ Key components of the project include:
 - Ensured clear error handling for queries unrelated to the cybersecurity dataset.
 - Designed a user-friendly interface similar to modern chatbot designs.
 
-*Screenshots showcasing the chat interface and chatbot responses will be added.*
 
 ### Ouassim Assoufi
 *Details to be added.*
