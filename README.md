@@ -54,8 +54,63 @@ Key components of the project include:
 - Designed a user-friendly interface similar to modern chatbot designs.
 
 
-### Ouassim Assoufi
-*Details to be added.*
+Here's a detailed version of your roles and contributions:
+
+---
+
+### Ouassim Assoufi  
+
+**Roles:** DevOps Responsible, CI/CD Responsible, Monitoring Responsible  
+
+
+
+**DevOps Engineer:**  
+- **Dockerization:**  
+  - Built **Docker Images** for the Flask backend and Angular frontend and run them as containers, ensuring consistent and portable environments.
+  -  ![response2](assets/outOfContext.PNG)
+  - Wrote **Dockerfiles** for both applications, including dependencies and build instructions.  
+
+- **Kubernetes Deployment:**  
+  - Created **Kubernetes pods** for the Flask backend and Angular frontend, deploying them within a **Minikube cluster**.  
+  - Developed **Deployment YAML files** for Flask and Angular with a **replica count of 2** to ensure high availability and fault tolerance.  
+  - Configured **Service YAML files** using the **LoadBalancer** service type to expose the applications to external traffic.  
+  - Validated deployments by checking pod status, endpoints, and ensuring services were reachable externally.  
+
+
+
+**CI/CD Specialist:**  
+- **Jenkins Pipeline:**  
+  - Designed and implemented a **Jenkins pipeline** to automate the entire build, test, and deployment lifecycle.  
+  - Authored a **Jenkinsfile** to:  
+    - Clone the **GitHub repository** containing the Flask and Angular source code.  
+    - Build Docker images for both applications.  
+    - Push the Docker images to a container registry (if used).  
+    - Deploy the pods into the **Minikube cluster** using `kubectl` commands or configuration files.  
+
+- Streamlined development and deployment workflows, reducing manual intervention and ensuring faster iteration cycles.  
+
+---
+
+**Monitoring Lead:**  
+- **Prometheus Integration:**  
+  - Configured **Prometheus** to scrape metrics from the Kubernetes cluster, focusing on:  
+    - Resource utilization (CPU, memory) of Flask and Angular pods.  
+    - Service availability and health.  
+    - Cluster-wide metrics like node status and resource allocation.  
+
+- **Grafana Visualization:**  
+  - Set up **Grafana dashboards** for real-time visualization of system performance.  
+  - Created custom panels to monitor:  
+    - Flask and Angular pod metrics.  
+    - Cluster resource usage.  
+    - Alerts for potential issues like pod restarts, high resource consumption, or service downtimes.  
+
+- Ensured continuous monitoring, enabling proactive issue detection and resolution.  
+
+---
+
+This version adds technical details to highlight your contributions and expertise in a professional and precise manner. Let me know if you'd like any further modifications!
+
 
 ### Hicham Fassali
 *Details to be added.*
