@@ -69,7 +69,7 @@ Here's a detailed version of your roles and contributions:
   - Built **Docker Images** for the Flask backend and Angular frontend and run them as containers, ensuring consistent and portable environments.
   -  ![response2](assets/angular-app.png)
  
-  - ![response2](assets/flask-appcontainer.png)
+  - ![response2](assets/flask-app container.png)
   - Wrote **Dockerfiles** for both applications, including dependencies and build instructions.  
 
 - **Kubernetes Deployment:**  
