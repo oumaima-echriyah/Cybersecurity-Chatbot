@@ -1,95 +1,83 @@
 pipeline {
     agent any
-    
-   environment {
-        DOCKERHUB_USERNAME = 'ouassim012'
-        DOCKERHUB_PASSWORD = 'Czju7848@'
+    environment {
+        DOCKERHUB_USERNAME = 'fassali'
+        DOCKERHUB_PASSWORD = 'Ertdfgcvb2001/'
     }
-
     stages {
-        stage('Git Config') {
+        stage('Prepare Environment') {
             steps {
-                sh 'git config --global http.postBuffer 524288000'
+                echo 'Setting up Git configurations...'
+                sh '''
+                    git config --global core.compression 0
+                '''
             }
         }
-        stage('Checkout') {
+
+        stage('Clone or Update Repository') {
             steps {
-                script {
-                    // Ensure the correct branch is checked out
-                    try {
-                        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oumaima-echriyah/Cybersecurity-Chatbot']])
-                    } catch (Exception e) {
-                        error "Git checkout failed: ${e.message}"
-                    }
-                }
+                echo 'Checking if repository exists...'
+                sh '''
+                    if [ ! -d "Cybersecurity-Chatbot" ]; then
+                        echo Repository not found. Cloning...
+                        git clone --depth 1 https://github.com/oumaima-echriyah/Cybersecurity-Chatbot.git
+                    else
+                        echo Repository found. Updating...
+                        cd Cybersecurity-Chatbot
+                        git pull --all
+                    fi
+                '''
             }
         }
-        
+
         stage('Login to Docker Hub') {
             steps {
                 script {
-                    // Login to Docker Hub with error handling
-                    try {
-                        sh "echo ${DOCKERHUB_PASSWORD} | docker login -u ${DOCKERHUB_USERNAME} --password-stdin"
-                    } catch (Exception e) {
-                        error "Docker login failed: ${e.message}"
-                    }
-                }
-            }
-        }
-        
-        stage('Build Docker image for Angular') {
-            steps {
-                script {
-                    // Build Docker image for Angular with error handling
-                    try {
-                        vat 'docker build -t cybersecurity/frontend-app Frontend'
-                    } catch (Exception e) {
-                        error "Docker build failed: ${e.message}"
+                    withCredentials([usernamePassword(credentialsId: 'hicham', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                        def loginCmd = "echo ${DOCKERHUB_PASSWORD} | /usr/local/bin/docker login -u ${DOCKERHUB_USERNAME} --password-stdin"
+                        sh loginCmd
                     }
                 }
             }
         }
 
-        stage('Push Angular image to Docker Hub') {
+        stage('Build Docker Image for flask') {
             steps {
-                script {
-                    // Push Docker image to Docker Hub with error handling
-                    try {
-                        sh 'docker push cybersecurity/frontend-app'
-                    } catch (Exception e) {
-                        error "Docker push failed: ${e.message}"
-                    }
-                }
+                sh '''/usr/local/bin/docker build -t fassali/diffusion_model1:flask-app ./Cybersecurity-Chatbot/diffusion_model'''
+
             }
         }
 
-        stage('Deploy Angular to Kubernetes') {
+        stage('Push flask Image to Hub') {
             steps {
-                script {
-                    // Deploy Angular to Kubernetes with error handling
-                    try {
-                        sh 'kubectl apply -f Frontend/frontend-deployment.yaml'
-                        sh 'kubectl apply -f Frontend/frontend-service.yaml'
-                    } catch (Exception e) {
-                        error "Kubernetes deployment failed: ${e.message}"
-                    }
-                }
+                sh '''/usr/local/bin/docker push fassali/diffusion_model1:flask-app'''
             }
         }
 
-        stage('Verify Deployment') {
+        stage('Deploy flask to Kubernetes') {
             steps {
                 script {
-                    // Verify if the Angular app is successfully deployed and running in Kubernetes
-                    try {
-                        sh 'kubectl get pods -n default'
-                        sh 'kubectl get svc -n default'
-                    } catch (Exception e) {
-                        error "Kubernetes verification failed: ${e.message}"
-                    }
+                    echo 'Checking Minikube Status...'
+                    def minikubeStatus = sh(script: '/usr/local/bin/minikube status', returnStatus: true)
+                    
+                    echo 'Setting Minikube environment variables...'
+                    sh '''
+                        export DOCKER_TLS_VERIFY="1"
+                        export DOCKER_HOST="tcp://127.0.0.1:60701"
+                        export DOCKER_CERT_PATH="/Users/mac/.minikube/certs"
+                        export MINIKUBE_ACTIVE_DOCKERD="minikube"
+                        echo 'Deploying to Kubernetes...'
+                        /usr/local/bin/kubectl apply -f Cybersecurity-Chatbot/diffusion model1/deployment.yaml
+                        /usr/local/bin/kubectl apply -f Cybersecurity-Chatbot/diffusion model1/service.yaml
+                    '''
                 }
             }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline execution completed.'
         }
     }
 }
