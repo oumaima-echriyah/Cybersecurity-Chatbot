@@ -31,13 +31,17 @@ Key components of the project include:
 
 **Backend Developer:**
 - Developed a **Flask API** for seamless interaction with the RAG system.
+![Successful Initialization of Vector Store in RAG System](assets/flask-api-test..PNG)
 
 
-*Example usage screenshot via Postman will be added.*
 
 **Frontend Developer:**
 - Developed an Angular-based **chat interface** for the cybersecurity chatbot.
+    ![Successful Initialization of Vector Store in RAG System](chat-interface.PNG)
+
 - Enabled users to ask cybersecurity-related questions interactively.
+  ![Successful Initialization of Vector Store in RAG System](assets/load-response.PNG)
+  ![Successful Initialization of Vector Store in RAG System](assets/response-security-bot.PNG)
 - Ensured clear error handling for queries unrelated to the cybersecurity dataset.
 - Designed a user-friendly interface similar to modern chatbot designs.
 
