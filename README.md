@@ -40,7 +40,7 @@ Key components of the project include:
 **Frontend Developer:**
 - Developed an Angular-based **chat interface** for the cybersecurity chatbot.
 - 
-    ![chat interface](chat-interface.PNG)
+    ![chat interface](chatInterface.PNG)
 
 - Enabled users to ask cybersecurity-related questions interactively.
   
