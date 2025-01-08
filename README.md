@@ -26,6 +26,7 @@ Key components of the project include:
     - `load_vector_db`: Loads the FAISS vector database for similarity searches.
     - `get_conversational_chain`: Creates a conversational chain with predefined prompts.
     - `ask`: Handles user queries, retrieves relevant data, and generates responses.
+![Successful Initialization of Vector Store in RAG System](assets/vectorstore.PNG)
 
 
 **Backend Developer:**
