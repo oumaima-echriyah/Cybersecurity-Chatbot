@@ -1,4 +1,4 @@
-# Combining Diffusion Models and Language Understanding Models in a Cybersecurity Chatbot with Advanced Retrieval-Augmented Generation (RAG) Using a Microservices Architecture in a DevOps/MLOps Context
+<img width="960" alt="image" src="https://github.com/user-attachments/assets/1cf99eb5-58c7-48d5-89a3-717b82314444" /># Combining Diffusion Models and Language Understanding Models in a Cybersecurity Chatbot with Advanced Retrieval-Augmented Generation (RAG) Using a Microservices Architecture in a DevOps/MLOps Context
 
 ## Introduction
 This project aims to enhance cybersecurity through a chatbot powered by Diffusion Models and Language Understanding Models. By integrating Advanced Retrieval-Augmented Generation (RAG) and utilizing a microservices architecture in a DevOps/MLOps context, we aim to provide an efficient, scalable, and intelligent chatbot solution for real-time cybersecurity threat management.
@@ -88,7 +88,8 @@ Here's a detailed version of your roles and contributions:
     - Build Docker images for both applications.  
     - Push the Docker images to a container registry (if used).  
     - Deploy the pods into the **Minikube cluster** using `kubectl` commands or configuration files.  
-
+![response2](assets/jenkins.png)
+![response2](assets/jenkins2.png)
 - Streamlined development and deployment workflows, reducing manual intervention and ensuring faster iteration cycles.  
 
 ---
