@@ -77,7 +77,7 @@ Here's a detailed version of your roles and contributions:
   - Developed **Deployment YAML files** for Flask and Angular with a **replica count of 2** to ensure high availability and fault tolerance.  
   - Configured **Service YAML files** using the **LoadBalancer** service type to expose the applications to external traffic.  
   - Validated deployments by checking pod status, endpoints, and ensuring services were reachable externally.  
-
+![response2](assets/pods.png)
 
 
 **CI/CD Specialist:**  
@@ -99,7 +99,7 @@ Here's a detailed version of your roles and contributions:
     - Resource utilization (CPU, memory) of Flask and Angular pods.  
     - Service availability and health.  
     - Cluster-wide metrics like node status and resource allocation.  
-
+![response2](assets/prometheus.png)
 - **Grafana Visualization:**  
   - Set up **Grafana dashboards** for real-time visualization of system performance.  
   - Created custom panels to monitor:  
