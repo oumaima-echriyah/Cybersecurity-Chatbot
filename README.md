@@ -69,7 +69,7 @@ Here's a detailed version of your roles and contributions:
   - Built **Docker Images** for the Flask backend and Angular frontend and run them as containers, ensuring consistent and portable environments.
   -  ![response2](assets/angular-app.png)
  
-  - ![response2](assets/flask-app container.png)
+  - ![response2](assets/flask-appcontainer.png)
   - Wrote **Dockerfiles** for both applications, including dependencies and build instructions.  
 
 - **Kubernetes Deployment:**  
@@ -105,7 +105,9 @@ Here's a detailed version of your roles and contributions:
   - Created custom panels to monitor:  
     - Flask and Angular pod metrics.  
     - Cluster resource usage.  
-    - Alerts for potential issues like pod restarts, high resource consumption, or service downtimes.  
+    ![response2](assets/grafana-dashboard.png)
+  ![response2](assets/dashboard2.png)
+
 
 - Ensured continuous monitoring, enabling proactive issue detection and resolution.  
 
