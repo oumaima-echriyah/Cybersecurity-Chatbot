@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_USERNAME = 'x'
+        DOCKERHUB_USERNAME = 'ouassim012'
         DOCKERHUB_PASSWORD = 'x@'
        // DOCKER_TLS_VERIFY = "1"
        // DOCKER_HOST ="npipe:////./pipe/docker_engine"
@@ -61,10 +61,20 @@ pipeline {
                 bat '''docker build -t ouassim012/cybersecurity:frontend-app ./Cybersecurity-Chatbot/FrontEnd'''
             }
         }
+        stage('Build Docker Image for Flask/RAG') {
+            steps {
+                bat '''docker build -t ouassim012/cybersecurity:flask-app ./Cybersecurity-Chatbot/BackEnd'''
+            }
+        }
 
         stage('Push Angular Image to Hub') {
             steps {
                 bat '''docker push ouassim012/cybersecurity:frontend-app'''
+            }
+        }
+        stage('Push Flask Image to Hub') {
+            steps {
+                bat '''docker push ouassim012/cybersecurity:flask-app'''
             }
         }
     
@@ -92,6 +102,8 @@ pipeline {
                    // )
                    bat ''' kubectl apply -f Cybersecurity-Chatbot/FrontEnd/frontend-deployment.yaml '''
                  bat ''' kubectl apply -f Cybersecurity-Chatbot/FrontEnd/frontend-service.yaml '''
+                  bat ''' kubectl apply -f Cybersecurity-Chatbot/BackEnd/flask-app-deployment.yaml '''
+                 bat ''' kubectl apply -f Cybersecurity-Chatbot/BackEnd/flask-app-service.yaml '''
 
                 }
             }
