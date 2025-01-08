@@ -86,7 +86,8 @@ Here's a detailed version of your roles and contributions:
   - Authored a **Jenkinsfile** to:  
     - Clone the **GitHub repository** containing the Flask and Angular source code.  
     - Build Docker images for both applications.  
-    - Push the Docker images to a container registry (if used).  
+    - Push the Docker images to a docker-hub container registry.
+    - ![response2](assets/docker-hub.png)
     - Deploy the pods into the **Minikube cluster** using `kubectl` commands or configuration files.  
 ![response2](assets/jenkins.png)
 ![response2](assets/jenkins2.png)
