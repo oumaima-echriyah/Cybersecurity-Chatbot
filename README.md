@@ -220,8 +220,21 @@ Deploy pods into the Minikube cluster using kubectl commands.
 
 
 
-### Abghouni Amal
-*Details to be added.*
+### Abghouni Amal 
+**Roles:**  Backend Developer, Frontend Developer
+
+### Backend Development
+
+- **API Development**: Developed a backend API that receives features contained in a JSON file. The API uses a trained  model to classify whether an attack is detected or not.
+- **Model Integration**: Integrated the trained model into the backend to process the incoming data and perform the classification.
+- **Result Handling**: Implemented functionality to send the classification results back to the frontend for further action.
+
+### Frontend Development
+
+- **File Upload Interface**: Created a user interface that allows users to upload the JSON file containing the features.
+- **Alert Display**: Developed the frontend logic to display alerts based on the classification results received from the backend.
+- **User Interaction**: Ensured a seamless user experience by handling file uploads and displaying results dynamically.
+
 
 ## Conclusion
 This project successfully combines cutting-edge technologies like Diffusion Models, Language Understanding Models, and Retrieval-Augmented Generation (RAG) to create a cybersecurity chatbot that can effectively respond to real-time threats. The use of a microservices architecture ensures scalability, while the adoption of DevOps/MLOps practices enables smooth deployment and continuous improvement. Our next steps include refining the models, improving the chatbot's ability to understand complex cybersecurity issues, and optimizing its integration with live systems.
