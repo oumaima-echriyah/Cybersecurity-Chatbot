@@ -1,0 +1,122 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+      <!-- Code HTML d'alert -->
+      <div class="container-fluid text-center">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div *ngIf="alertClass === 1" class="new-message-box-danger">
+              <div class="info-tab tip-icon-danger" title="error">
+                <i></i>
+              </div>
+              <div class="tip-box-danger">
+                <p>{{ alertMessage }}
+                  
+                </p>
+              </div>
+            </div>
+      
+            <div *ngIf="alertClass === 0" class="new-message-box-success">
+              <div class="info-tab tip-icon-success" title="success">
+                <i></i>
+              </div>
+              <div class="tip-box-success">
+                <p>{{ alertMessage }}
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Code HTML de la popup -->
+      <div class="upload-container">
+        <!-- Zone de drag-and-drop -->
+        <div
+          class="drop-zone"
+          (dragover)="onDragOver($event)"
+          (drop)="onFileDrop($event)"
+        >
+          <!-- Ajouter l'image avant le premier paragraphe -->
+          <img src="assets/images/upload.png" alt="Upload Icon" class="upload-icon" />
+  
+          <p>Drag and Drop files to upload</p>
+          <p>or</p>
+          <button (click)="fileInput.click()" class="browse-btn" [disabled]="uploadedFiles.length > 0">Browse</button>
+          <input type="file" #fileInput (change)="onFileSelect($event)" accept=".json" hidden />
+          <p class="supported-files">Supported files: JSON</p>
+        </div>
+  
+        <!-- Affiche l'image si aucun fichier n'est téléchargé -->
+        <div *ngIf="uploadedFiles.length === 0">
+          <div id="success-box">
+            <div class="dot"></div>
+            <div class="dot two"></div>
+            <div class="face">
+              <div class="eye"></div>
+              <div class="eye right"></div>
+              <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message">
+              <h1 class="alert">No Uploads!</h1>
+              <p>Please upload files to continue.</p>
+            </div>
+            <button class="button-box" (click)="onClosePopup()">Close</button>
+          </div>
+        </div>
+  
+        <!-- Affiche la liste des fichiers téléchargés -->
+        <div class="uploaded-files">
+          <!-- Vérification s'il y a des fichiers uploadés -->
+          <div *ngIf="uploadedFiles.length > 0">
+            <h3 >Uploaded file</h3>
+            <div class="file-info" style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+              <!-- Nom du fichier -->
+              <span [ngClass]="uploadedFiles[0].type">
+                {{ uploadedFiles[0].name }}
+              </span>
+            
+              <!-- Bouton pour supprimer un fichier -->
+              <button class="delete-btn" (click)="deleteFile(0)" style="margin-left: 10px;">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!-- Barre de progression si l'upload n'est pas terminé -->
+            <div class="progress-bar" *ngIf="uploadedFiles[0].progress < 100">
+              <div
+                class="progress"
+                [style.width.%]="uploadedFiles[0].progress"
+                [ngClass]="{'error': uploadedFiles[0].error}"
+              ></div>
+            </div>
+              
+        
+            <!-- Affiche le contenu JSON une fois qu'il a été chargé -->
+            <div *ngIf="uploadedFiles[0].content" class="json-content">
+              <pre>{{ uploadedFiles[0].content | json }}</pre>
+            </div>
+        
+           
+        
+            <!-- Bouton d'analyse -->
+           <!-- Vérification que uploadedFiles contient des fichiers et que le premier fichier a du contenu -->
+           <div *ngIf="uploadedFiles.length > 0">
+            <!-- Vérification si l'upload est terminé -->
+            <div *ngIf="uploadedFiles[0].progress === 100">
+              <button class="read-json-btn" (click)="readJsonContent(0)">
+                Analyse
+              </button>
+            </div>
+          </div>
+  
+          </div>
+        </div>
+        
+      </div>
+  
+     
+      
+    </div>
+  </div>
+  

@@ -11,6 +11,7 @@ interface PromptQuestion {
   styleUrls: ['./chat-interface.component.css']
 })
 export class ChatInterfaceComponent implements OnInit {
+  showPopup: boolean = false;
   promptQuestions: PromptQuestion[] = [
     {
       input: "How To Maintain Efffective Cyber Security?",
@@ -395,6 +396,10 @@ handleSendMessage(appendHistory: boolean): void {
   }
 
 
+ // Méthode pour ouvrir/fermer la popup
+ togglePopup() {
+  this.showPopup = !this.showPopup;
+}
 
 
 

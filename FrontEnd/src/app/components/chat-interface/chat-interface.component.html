@@ -9,6 +9,18 @@
       <div class="sideNavButton">
           <button> <i class="fa-solid fa-plus"></i> <span class="collapseText collapse" (click)="newChat()">New Chat</span></button>
       </div>
+
+           <!-- Bouton pour ouvrir la popup -->
+    <div class="afficher-poopeup">
+        <button (click)="togglePopup()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="collapseText collapse">Analyser</span>
+    </button>
+    </div>    
+
+      <!-- Intégration du composant popup -->
+     <app-diffusion-model-interface *ngIf="showPopup"(closePopup)="togglePopup()"></app-diffusion-model-interface>
+     
       <div class="chatHistory">
           <h1 class="recentText">Recent</h1>
           <ul>

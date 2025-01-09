@@ -45,6 +45,10 @@ i{
     overflow-y: scroll;
 }
 
+.sideNavigation .afficher-poopeup{
+    margin-bottom: 60px;
+}
+
 .sideNavigation .chatHistory::-webkit-scrollbar{
     display: none;
 }
@@ -90,7 +94,7 @@ text-overflow: ellipsis;
 }
 
 
-.sideNavigation .sideNavButton button{
+.sideNavigation .sideNavButton button , .sideNavigation .afficher-poopeup button {
     height: 40px;
     width: 140px;
     border-radius: 50px;
