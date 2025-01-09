@@ -229,6 +229,9 @@ Deploy pods into the Minikube cluster using kubectl commands.
 - **Model Integration**: Integrated the trained model into the backend to process the incoming data and perform the classification.
 - **Result Handling**: Implemented functionality to send the classification results back to the frontend for further action.
 
+Below is an example of the API response :
+  ![API Response Screenshot](assets/api_response.png)
+
 ### Frontend Development
 
 - **File Upload Interface**: Created a user interface that allows users to upload the JSON file containing the features.
