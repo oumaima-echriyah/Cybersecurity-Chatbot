@@ -230,6 +230,7 @@ Deploy pods into the Minikube cluster using kubectl commands.
 - **Result Handling**: Implemented functionality to send the classification results back to the frontend for further action.
 
 Below is an example of the API response :
+
   ![API Response Screenshot](assets/api_response.png)
 
 ### Frontend Development
@@ -237,6 +238,17 @@ Below is an example of the API response :
 - **File Upload Interface**: Created a user interface that allows users to upload the JSON file containing the features.
 - **Alert Display**: Developed the frontend logic to display alerts based on the classification results received from the backend.
 - **User Interaction**: Ensured a seamless user experience by handling file uploads and displaying results dynamically.
+
+Below is a screenshot of the Analyser interface that allows users to upload files and view the results:
+![Analyser Interface Screenshot](assets/Analyser_interface.png)
+
+
+The interface when no threats are detected:
+![No Threats Detected Screenshot](assets/No_Threats_Detected.png)
+
+The interface when a threat is detected:
+![Threat Detected Alert Screenshot](assets/Threat_Detected_Alert.png)
+
 
 
 ## Conclusion
