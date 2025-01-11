@@ -54,7 +54,6 @@ Key components of the project include:
 - Designed a user-friendly interface similar to modern chatbot designs.
 
 
-Here's a detailed version of your roles and contributions:
 
 ---
 
@@ -115,7 +114,6 @@ Here's a detailed version of your roles and contributions:
 
 ---
 
-This version adds technical details to highlight your contributions and expertise in a professional and precise manner. Let me know if you'd like any further modifications!
 
 
 ### Hicham Fassali
